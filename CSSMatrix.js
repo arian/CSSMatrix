@@ -359,6 +359,12 @@ CSSMatrix.prototype.transform = function(t /* tuple */ ){
 	return t;
 };
 
-CSSMatrix.prototype.toFulllString = function(){
-
+CSSMatrix.prototype.toFullString = function(){
+	var m = this;
+	return [
+		[m.m11, m.m12, m.m13, m.m14].join(', '),
+		[m.m21, m.m22, m.m23, m.m24].join(', '),
+		[m.m31, m.m32, m.m33, m.m34].join(', '),
+		[m.m41, m.m42, m.m43, m.m44].join(', ')
+	].join('\n');
 };
