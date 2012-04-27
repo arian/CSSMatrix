@@ -7,7 +7,7 @@
  * CSSMatrix Shim
  * @constructor
  */
-var CSSMatrix = module.exports = function(){
+var CSSMatrix = function(){
 	var a = [].slice.call(arguments);
 	if (a.length) for (var i = a.length; i--;){
 		if (Math.abs(a[i]) < CSSMatrix.SMALL_NUMBER) a[i] = 0;
@@ -368,3 +368,23 @@ CSSMatrix.prototype.toFullString = function(){
 		[m.m41, m.m42, m.m43, m.m44].join(', ')
 	].join('\n');
 };
+
+(function (name, definition){
+  if (typeof define === 'function'){ // AMD
+    define(definition);
+  } else if (typeof module !== 'undefined' && module.exports) { // Node.js
+    module.exports = definition();
+  } else { // Browser
+    var theModule = definition(),
+        global = this, old = global[name];
+    theModule.noConflict = function () {
+      global[name] = old;
+      return theModule;
+    };
+    global[name] = theModule;
+  }
+})('CSSMatrix', function () {
+  // return the module's API
+  return CSSMatrix;
+});
+
