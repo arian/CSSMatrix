@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/arian/CSSMatrix.png)](http://travis-ci.org/arian/CSSMatrix)
 CSSMatrix
 =========
 
