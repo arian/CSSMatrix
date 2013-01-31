@@ -57,21 +57,37 @@ CSSMatrix.Rotate = function(rx, ry, rz){
 };
 
 CSSMatrix.RotateAxisAngle = function(x, y, z, angle){
-	angle *= Math.PI / 180;
-	var m = new CSSMatrix(), cos = Math.cos(angle), sin = Math.sin(angle);
-	var cos1 = 1 - cos;
+	angle *= Math.PI / 360;
 
-	m.m11 = cos + x * x * cos1;
-	m.m12 = x * y * cos1 - z * sin;
-	m.m13 = x * z * cos1 - y * sin;
+	var sinA = Math.sin(angle), cosA = Math.cos(angle), sinA2 = sinA * sinA;
+	var length = Math.sqrt(x * x + y * y + z * z);
 
-	m.m21 = y * x * cos1 + z * sin;
-	m.m22 = cos * y * y * cos1;
-	m.m21 = y * z * cos1 - x * sin;
+	if (length === 0){
+		// bad vector length, use something reasonable
+		x = 0;
+		y = 0;
+		z = 1;
+	} else {
+		x /= length;
+		y /= length;
+		z /= length;
+	}
 
-	m.m31 = z * x * cos1 - y * sin;
-	m.m32 = z * y * cos1 + x * sin;
-	m.m33 = cos + z * z * cos1;
+	var x2 = x * x, y2 = y * y, z2 = z * z;
+
+	var m = new CSSMatrix();
+	m.m11 = 1 - 2 * (y2 + z2) * sinA2;
+	m.m12 = 2 * (x * y * sinA2 + z * sinA * cosA);
+	m.m13 = 2 * (x * z * sinA2 - y * sinA * cosA);
+	m.m21 = 2 * (y * x * sinA2 - z * sinA * cosA);
+	m.m22 = 1 - 2 * (z2 + x2) * sinA2;
+	m.m23 = 2 * (y * z * sinA2 + x * sinA * cosA);
+	m.m31 = 2 * (z * x * sinA2 + y * sinA * cosA);
+	m.m32 = 2 * (z * y * sinA2 - x * sinA * cosA);
+	m.m33 = 1 - 2 * (x2 + y2) * sinA2;
+	m.m14 = m.m24 = m.m34 = 0;
+	m.m41 = m.m42 = m.m43 = 0;
+	m.m44 = 1;
 
 	return m;
 };
