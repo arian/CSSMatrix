@@ -1,7 +1,7 @@
 CSSMatrix
 =========
 
-This is a CSSMatrix class as defined by the [w3c CSS3 3d Transforms](http://www.w3.org/TR/css3-3d-transforms/#cssmatrix-interface) specification.
+This is a CSSMatrix class as defined by the [w3c CSS3 3d Transforms](http://www.w3.org/TR/2011/WD-css3-2d-transforms-20111215/#cssmatrix-interface) specification.
 
 ### Installation
 
@@ -9,7 +9,7 @@ This is a CSSMatrix class as defined by the [w3c CSS3 3d Transforms](http://www.
 
 ### Usage
 
-It should be compatible with documentation defined at [w3.org](http://www.w3.org/TR/css3-3d-transforms/#cssmatrix-interface) and at [WebKitCSSMatrix](https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariCSSRef/Articles/Functions.html#//apple_ref/css/func/matrix3d) Safari documentation.
+It should be compatible with documentation defined at [w3.org](http://www.w3.org/TR/2011/WD-css3-2d-transforms-20111215/#cssmatrix-interface) and at [WebKitCSSMatrix](https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariCSSRef/Articles/Functions.html#//apple_ref/css/func/matrix3d) Safari documentation.
 
 __Methods:__
 
@@ -20,13 +20,12 @@ __Methods:__
 - skewX(angle)
 - skewY(angle)
 - toString()
+
+__Additional Methods__:
+
 - transform(tuple)
 - toFullString()
 
 __Properties:__
 
 - m11 to m44. m12 is the second element in the first row.
-
-## Warning
-
-Rotating matrices might yield into wrong results or results inconsistent with WebKitCSSMatrix.
