@@ -1,3 +1,4 @@
+"use strict";
 
 // a CSSMatrix shim
 // http://www.w3.org/TR/css3-3d-transforms/#cssmatrix-interface
@@ -7,8 +8,7 @@
  * CSSMatrix Shim
  * @constructor
  */
-
-var CSSMatrix = module.exports = function () {
+var CSSMatrix = function(){
 	var a = [].slice.call(arguments);
 	if (a.length) for (var i = a.length; i--;){
 		if (Math.abs(a[i]) < CSSMatrix.SMALL_NUMBER) a[i] = 0;
@@ -370,3 +370,5 @@ CSSMatrix.prototype.toFullString = function(){
 		[m.m41, m.m42, m.m43, m.m44].join(', ')
 	].join('\n');
 };
+
+module.exports = CSSMatrix;
