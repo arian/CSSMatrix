@@ -39,20 +39,20 @@ assert.equal('matrix3d(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)', m.toStr
 
 m = new Matrix();
 m = m.rotate(90, 0, 0);
-assert.equal('matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)', m.toString());
+assert.equal('matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)', m.toString());
 
 m = new Matrix();
 m = m.rotate(0, 90, 0);
-assert.equal('matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1)', m.toString());
+assert.equal('matrix3d(0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1)', m.toString());
 
 m = new Matrix();
 m = m.rotate(0, 0, 90);
-assert.equal('matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)', m.toString());
+assert.equal('matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)', m.toString());
 
 m = new Matrix();
 m = m.rotate(90, 90, 90);
 // matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1)
-// assert.equal('matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1)', m.toString());
+assert.equal('matrix3d(0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1)', m.toString());
 
 // ### Rotate Axis Angle
 
@@ -67,13 +67,13 @@ m = m.rotate(90, 90, 90);
 // ### SkewX
 
 m = new Matrix();
-m = m.skewX(2);
+m = m.skewY(2);
 assert.equal('matrix3d(1, 0.03492076949174773, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)', m.toString());
 
 // ### SkwewY
 
 m = new Matrix();
-m = m.skewY(2);
+m = m.skewX(2);
 assert.equal('matrix3d(1, 0, 0, 0, 0.03492076949174773, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)', m.toString());
 
 // ### Translate
