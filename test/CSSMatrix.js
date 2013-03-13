@@ -13,11 +13,20 @@ var assert = {
 };
 
 var assertMatrix = function(expected, actual){
-	var m = new Matrix();
+	var i, j, p,
+		m = new Matrix(),
+		letters = ['a', 'b', 'c', 'd', 'e', 'f'];
 	m.setMatrixValue(expected);
 	expected = m;
-	for (var i = 1; i <= 4; i++) for (var j = 1; j <= 4; j++){
-		var p = 'm' + j + i;
+	for (i = 1; i <= 4; i++) for (j = 1; j <= 4; j++){
+		p = 'm' + j + i;
+		if (Math.abs(expected[p] - actual[p]) > Matrix.SMALL_NUMBER){
+			console.log("failing matrix:", actual, "should be ", expected);
+			throw new Error("Expected " + p + " to be " + expected[p] + " but was " + actual[p]);
+		}
+	}
+	for (i = 0; i < letters.length; i++) {
+		p = letters[i];
 		if (Math.abs(expected[p] - actual[p]) > Matrix.SMALL_NUMBER){
 			console.log("failing matrix:", actual, "should be ", expected);
 			throw new Error("Expected " + p + " to be " + expected[p] + " but was " + actual[p]);
