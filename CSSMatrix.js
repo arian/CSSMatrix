@@ -26,7 +26,8 @@ var CSSMatrix = function(){
 	}
 };
 
-CSSMatrix.SMALL_NUMBER = 1e-8;
+// decimal values in WebKitCSSMatrix.prototype.toString are truncated to 6 digits
+CSSMatrix.SMALL_NUMBER = 1e-6;
 
 // Transformations
 
@@ -142,25 +143,25 @@ CSSMatrix.Translate = function(x, y, z){
 
 CSSMatrix.multiply = function(m1, m2){
 
-	var m11 = m1.m11 * m2.m11 + m1.m12 * m2.m21 + m1.m13 * m2.m31 + m1.m14 * m2.m41,
-		m12 = m1.m11 * m2.m12 + m1.m12 * m2.m22 + m1.m13 * m2.m32 + m1.m14 * m2.m42,
-		m13 = m1.m11 * m2.m13 + m1.m12 * m2.m23 + m1.m13 * m2.m33 + m1.m14 * m2.m43,
-		m14 = m1.m11 * m2.m14 + m1.m12 * m2.m24 + m1.m13 * m2.m34 + m1.m14 * m2.m44,
+	var m11 = m2.m11 * m1.m11 + m2.m12 * m1.m21 + m2.m13 * m1.m31 + m2.m14 * m1.m41,
+		m12 = m2.m11 * m1.m12 + m2.m12 * m1.m22 + m2.m13 * m1.m32 + m2.m14 * m1.m42,
+		m13 = m2.m11 * m1.m13 + m2.m12 * m1.m23 + m2.m13 * m1.m33 + m2.m14 * m1.m43,
+		m14 = m2.m11 * m1.m14 + m2.m12 * m1.m24 + m2.m13 * m1.m34 + m2.m14 * m1.m44,
 
-		m21 = m1.m21 * m2.m11 + m1.m22 * m2.m21 + m1.m23 * m2.m31 + m1.m24 * m2.m41,
-		m22 = m1.m21 * m2.m12 + m1.m22 * m2.m22 + m1.m23 * m2.m32 + m1.m24 * m2.m42,
-		m23 = m1.m21 * m2.m13 + m1.m22 * m2.m23 + m1.m23 * m2.m33 + m1.m24 * m2.m43,
-		m24 = m1.m21 * m2.m14 + m1.m22 * m2.m24 + m1.m23 * m2.m34 + m1.m24 * m2.m44,
+		m21 = m2.m21 * m1.m11 + m2.m22 * m1.m21 + m2.m23 * m1.m31 + m2.m24 * m1.m41,
+		m22 = m2.m21 * m1.m12 + m2.m22 * m1.m22 + m2.m23 * m1.m32 + m2.m24 * m1.m42,
+		m23 = m2.m21 * m1.m13 + m2.m22 * m1.m23 + m2.m23 * m1.m33 + m2.m24 * m1.m43,
+		m24 = m2.m21 * m1.m14 + m2.m22 * m1.m24 + m2.m23 * m1.m34 + m2.m24 * m1.m44,
 
-		m31 = m1.m31 * m2.m11 + m1.m32 * m2.m21 + m1.m33 * m2.m31 + m1.m34 * m2.m41,
-		m32 = m1.m31 * m2.m12 + m1.m32 * m2.m22 + m1.m33 * m2.m32 + m1.m34 * m2.m42,
-		m33 = m1.m31 * m2.m13 + m1.m32 * m2.m23 + m1.m33 * m2.m33 + m1.m34 * m2.m43,
-		m34 = m1.m31 * m2.m14 + m1.m32 * m2.m24 + m1.m33 * m2.m34 + m1.m34 * m2.m44,
+		m31 = m2.m31 * m1.m11 + m2.m32 * m1.m21 + m2.m33 * m1.m31 + m2.m34 * m1.m41,
+		m32 = m2.m31 * m1.m12 + m2.m32 * m1.m22 + m2.m33 * m1.m32 + m2.m34 * m1.m42,
+		m33 = m2.m31 * m1.m13 + m2.m32 * m1.m23 + m2.m33 * m1.m33 + m2.m34 * m1.m43,
+		m34 = m2.m31 * m1.m14 + m2.m32 * m1.m24 + m2.m33 * m1.m34 + m2.m34 * m1.m44,
 
-		m41 = m1.m41 * m2.m11 + m1.m42 * m2.m21 + m1.m43 * m2.m31 + m1.m44 * m2.m41,
-		m42 = m1.m41 * m2.m12 + m1.m42 * m2.m22 + m1.m43 * m2.m32 + m1.m44 * m2.m42,
-		m43 = m1.m41 * m2.m13 + m1.m42 * m2.m23 + m1.m43 * m2.m33 + m1.m44 * m2.m43,
-		m44 = m1.m41 * m2.m14 + m1.m42 * m2.m24 + m1.m43 * m2.m34 + m1.m44 * m2.m44;
+		m41 = m2.m41 * m1.m11 + m2.m42 * m1.m21 + m2.m43 * m1.m31 + m2.m44 * m1.m41,
+		m42 = m2.m41 * m1.m12 + m2.m42 * m1.m22 + m2.m43 * m1.m32 + m2.m44 * m1.m42,
+		m43 = m2.m41 * m1.m13 + m2.m42 * m1.m23 + m2.m43 * m1.m33 + m2.m44 * m1.m43,
+		m44 = m2.m41 * m1.m14 + m2.m42 * m1.m24 + m2.m43 * m1.m34 + m2.m44 * m1.m44;
 
 	return new CSSMatrix(
 		m11, m12, m13, m14,
@@ -238,7 +239,7 @@ CSSMatrix.prototype.inverse = function(){
  */
 CSSMatrix.prototype.translate = function(x, y, z){
 	if (z == null) z = 0;
-	return CSSMatrix.multiply(CSSMatrix.Translate(x, y, z), this);
+	return CSSMatrix.multiply(this, CSSMatrix.Translate(x, y, z));
 };
 
 /**
@@ -255,7 +256,7 @@ CSSMatrix.prototype.translate = function(x, y, z){
 CSSMatrix.prototype.scale = function(x, y, z){
 	if (y == null) y = x;
 	if (z == null) z = 1;
-	return CSSMatrix.multiply(CSSMatrix.Scale(x, y, z), this);
+	return CSSMatrix.multiply(this, CSSMatrix.Scale(x, y, z));
 };
 
 /**
@@ -273,7 +274,7 @@ CSSMatrix.prototype.scale = function(x, y, z){
 CSSMatrix.prototype.rotate = function(rx, ry, rz){
 	if (ry == null) ry = rx;
 	if (rz == null) rz = rx;
-	return CSSMatrix.multiply(CSSMatrix.Rotate(rx, ry, rz), this);
+	return CSSMatrix.multiply(this, CSSMatrix.Rotate(rx, ry, rz));
 };
 
 /**
@@ -291,7 +292,7 @@ CSSMatrix.prototype.rotate = function(rx, ry, rz){
 CSSMatrix.prototype.rotateAxisAngle = function(x, y, z, angle){
 	if (y == null) y = x;
 	if (z == null) z = x;
-	return CSSMatrix.multiply(CSSMatrix.RotateAxisAngle(x, y, z, angle), this);
+	return CSSMatrix.multiply(this, CSSMatrix.RotateAxisAngle(x, y, z, angle));
 };
 
 // Defined in WebKitCSSMatrix, but not in the w3c draft
@@ -303,7 +304,7 @@ CSSMatrix.prototype.rotateAxisAngle = function(x, y, z, angle){
  * @return {CSSMatrix} The result matrix
  */
 CSSMatrix.prototype.skewX = function(angle){
-	return CSSMatrix.multiply(CSSMatrix.SkewX(angle), this);
+	return CSSMatrix.multiply(this, CSSMatrix.SkewX(angle));
 };
 
 /**
@@ -313,7 +314,7 @@ CSSMatrix.prototype.skewX = function(angle){
  * @return {CSSMatrix} The result matrix
  */
 CSSMatrix.prototype.skewY = function(angle){
-	return CSSMatrix.multiply(CSSMatrix.SkewY(angle), this);
+	return CSSMatrix.multiply(this, CSSMatrix.SkewY(angle));
 };
 
 /**
