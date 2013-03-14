@@ -73,6 +73,11 @@ test("identity", function(Matrix){
 	assertMatrix('matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)', m);
 });
 
+test("str passed in constructor", function(Matrix){
+	var m = new Matrix('matrix(1, 0, 0, 1, 100, 200)');
+	assertMatrix('matrix(1, 0, 0, 1, 100, 200)', m);
+});
+
 test("setMatrixValue 2d", function(Matrix){
 	var m = new Matrix();
 	m.setMatrixValue('matrix(1, 0, 0, 1, 100, 200)');
