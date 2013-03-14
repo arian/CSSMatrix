@@ -1,6 +1,8 @@
 CSSMatrix
 =========
 
+[![Build Status](https://secure.travis-ci.org/arian/CSSMatrix.png?branch=master)](http://travis-ci.org/arian/CSSMatrix)
+
 This is a CSSMatrix class as defined by the [w3c CSS3 3d Transforms](http://www.w3.org/TR/2011/WD-css3-2d-transforms-20111215/#cssmatrix-interface) specification.
 
 ### Installation
