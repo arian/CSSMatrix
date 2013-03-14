@@ -194,6 +194,8 @@ test("multiply2", function(Matrix){
 	assertMatrix('matrix3d(0.939693, 0, -0.342020, 0, -0.088521, 0.965926, -0.243210, 0, 0.330366, 0.258819, 0.907673, 0, 0, 0, 80, 1)', m);
 });
 
+console.log("total: " + (success + failures) + " passed: " + success + " failures: " + failures);
+
 if (!browser && typeof process != 'undefined'){
 	process.exit(failures);
 }
