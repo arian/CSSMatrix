@@ -13,11 +13,20 @@ var assert = {
 };
 
 var assertMatrix = function(expected, actual){
-	var m = new Matrix();
+	var i, j, p,
+		m = new Matrix(),
+		letters = ['a', 'b', 'c', 'd', 'e', 'f'];
 	m.setMatrixValue(expected);
 	expected = m;
-	for (var i = 1; i <= 4; i++) for (var j = 1; j <= 4; j++){
-		var p = 'm' + j + i;
+	for (i = 1; i <= 4; i++) for (j = 1; j <= 4; j++){
+		p = 'm' + j + i;
+		if (Math.abs(expected[p] - actual[p]) > Matrix.SMALL_NUMBER){
+			console.log("failing matrix:", actual, "should be ", expected);
+			throw new Error("Expected " + p + " to be " + expected[p] + " but was " + actual[p]);
+		}
+	}
+	for (i = 0; i < letters.length; i++) {
+		p = letters[i];
 		if (Math.abs(expected[p] - actual[p]) > Matrix.SMALL_NUMBER){
 			console.log("failing matrix:", actual, "should be ", expected);
 			throw new Error("Expected " + p + " to be " + expected[p] + " but was " + actual[p]);
@@ -62,6 +71,11 @@ function test(name, fn, native){
 test("identity", function(Matrix){
 	var m = new Matrix();
 	assertMatrix('matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)', m);
+});
+
+test("str passed in constructor", function(Matrix){
+	var m = new Matrix('matrix(1, 0, 0, 1, 100, 200)');
+	assertMatrix('matrix(1, 0, 0, 1, 100, 200)', m);
 });
 
 test("setMatrixValue 2d", function(Matrix){
