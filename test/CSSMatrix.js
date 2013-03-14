@@ -39,12 +39,17 @@ var CSSMatrix = global.CSSMatrix || global.WebKitCSSMatrix || global.MSCSSMatrix
 
 var results = browser && global.document.getElementById("results");
 
+var success = 0;
+var failures = 0;
+
 function pass(msg){
+	success++;
 	if (!browser) console.log('\x1B[32m✓    ' + msg + '\x1B[0m');
 	else results.innerHTML += '<p class="pass">' + msg + '</p>';
 }
 
 function fail(msg, err){
+	failures++;
 	if (!browser){
 		console.log('\x1B[31m✘    ' + msg + '\x1B[0m');
 		if (err) console.error(err);
@@ -189,3 +194,6 @@ test("multiply2", function(Matrix){
 	assertMatrix('matrix3d(0.939693, 0, -0.342020, 0, -0.088521, 0.965926, -0.243210, 0, 0.330366, 0.258819, 0.907673, 0, 0, 0, 80, 1)', m);
 });
 
+if (!browser && typeof process != 'undefined'){
+	process.exit(failures);
+}
