@@ -2,7 +2,7 @@
   "author": "Arian Stolwijk",
   "name": "CSSMatrix",
   "description": "A CSSMatrix shim for 3D tranformation matrices",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/arian/CSSMatrix.git"
