@@ -1,11 +1,11 @@
 {
 	"name": "CSSMatrix",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"authors": [
 		"Martijn van Beek <martijn@blueberry.nl>",
 		"Arian Stolwijk"
 	],
-	"description": "HTML5 Library",
+	"description": "CSSMatrix shim",
 	"license": "MIT",
 	"ignore": [
 		"**/.*",

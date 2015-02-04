@@ -1,4 +1,16 @@
-(function(){
+/**
+ * CSSMatrix class to manipulate CSS Matrices
+ * 
+ * @class CSSMatrix
+ *
+ * @author Arian Stolwijk
+ * @author Martijn van Beek <martijn@blueberry.nl>
+ *
+ * @version 0.1.2
+ * @license MIT
+ */
+
+(function(glob){
 	"use strict";
 
 	// a CSSMatrix shim
@@ -324,6 +336,15 @@
 	};
 
 	/**
+	 * @method forceMatrix2D
+	 * @return {CSSMatrix}
+	 */
+	CSSMatrix.prototype.forceMatrix2D = function(){
+		this.affine = true;
+		return this;
+	};
+
+	/**
 	 * Returns a string representation of the matrix.
 	 * @return {string}
 	 */
@@ -406,4 +427,4 @@
 		}
 	}
 
-})();
+})( window || this );
