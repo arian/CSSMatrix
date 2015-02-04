@@ -1,0 +1,16 @@
+{
+	"name": "CSSMatrix",
+	"version": "0.1.1",
+	"authors": [
+		"Martijn van Beek <martijn@blueberry.nl>",
+		"Arian Stolwijk"
+	],
+	"description": "HTML5 Library",
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"test",
+		"tests"
+	]
+}
