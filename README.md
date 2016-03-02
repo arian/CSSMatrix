@@ -11,7 +11,7 @@ This is a CSSMatrix class as defined by the [w3c CSS3 3d Transforms](http://www.
 
 ### Usage
 
-It should be compatible with documentation defined at [w3.org](http://www.w3.org/TR/2011/WD-css3-2d-transforms-20111215/#cssmatrix-interface) and at [WebKitCSSMatrix](https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariCSSRef/Articles/Functions.html#//apple_ref/css/func/matrix3d) Safari documentation.
+It should be compatible with documentation defined at [w3.org](http://www.w3.org/TR/2011/WD-css3-2d-transforms-20111215/#cssmatrix-interface) and at [WebKitCSSMatrix](https://developer.apple.com/library/iad/documentation/AudioVideo/Reference/WebKitCSSMatrixClassReference/index.html) Safari documentation.
 
 __Methods:__
 
