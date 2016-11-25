@@ -1,0 +1,16 @@
+{
+	"name": "CSSMatrix",
+	"version": "0.1.2",
+	"authors": [
+		"Martijn van Beek <martijn@blueberry.nl>",
+		"Arian Stolwijk"
+	],
+	"description": "CSSMatrix shim",
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"test",
+		"tests"
+	]
+}
